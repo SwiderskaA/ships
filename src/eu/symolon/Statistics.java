@@ -15,7 +15,8 @@ public class Statistics {
     }
 
     public void printStatistics()
-    {
-        //TODO: implement print stats
+    {   //TODO: change it into polish!
+        System.out.println("Number of success hits :" + numberOfSuccessHits);
+        System.out.println("Number of missed hits :" + numberOfMissedHits);
     }
 }
