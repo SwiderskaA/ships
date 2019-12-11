@@ -8,4 +8,25 @@ public class Validator {
         }
         return true;
     }
+
+    public static boolean checkCountOfShips(int countOfShips){
+        if(countOfShips<2 && countOfShips>5){
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean checkIfIsDigit(String input){
+        if(input.matches("^[0-9]*$")){
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean checkIfInRangeOfBoardSize(int coordinate,Board board){
+        if(coordinate<board.getSize()){
+            return true;
+        }
+        return false;
+    }
 }

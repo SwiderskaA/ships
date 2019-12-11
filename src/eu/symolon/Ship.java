@@ -1,9 +1,15 @@
 package eu.symolon;
 
 public class Ship {
-    private static int xCoordinate;
-    private static int yCoordinate;
-    private static int size;
+    private int xCoordinate;
+    private int yCoordinate;
+    private int size;
+
+    public Ship(int xCoordinate, int yCoordinate, int size) {
+        this.xCoordinate = xCoordinate;
+        this.yCoordinate = yCoordinate;
+        this.size = size;
+    }
 
     public void setXCoordinate(int coordinateX)
     {
@@ -32,7 +38,7 @@ public class Ship {
 
     public void setSize(int size)
     {
-        Ship.size = size;
+        this.size = size;
     }
 
     public void printCoordinates()
