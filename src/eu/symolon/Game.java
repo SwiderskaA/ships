@@ -23,7 +23,7 @@ public class Game {
         return Integer.parseInt(countOfShips);
     }
 
-    public static Ship askUserForCreateShip(){
+    public static void askUserForCreateShip(){
         String row,column,size;
         do {
             System.out.println("Podaj wiersz X : ");
@@ -40,7 +40,7 @@ public class Game {
             size=scan.nextLine();
         }while(!Validator.checkIfIsDigit(size));
 
-        return new Ship(Integer.parseInt(row),Integer.parseInt(column),Integer.parseInt(size));
+
     }
 
     public static int guessShipRowCoordinate(){
