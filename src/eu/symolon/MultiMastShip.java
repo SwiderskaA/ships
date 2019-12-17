@@ -14,12 +14,5 @@ public class MultiMastShip extends Ship {
         this.direction = direction;
     }
 
-    public void printShipInfo()
-    {
-        System.out.println("Ship size: "+this.getSize());
-        printCoordinates();
-        System.out.println("Direction: "+this.getDirection());
-    }
-
 
 }
