@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class Game {
     static Scanner scan = new Scanner(System.in);
-    static List<Ship> allShips=new ArrayList<>();
 
 
     public static void startGame(){
@@ -23,31 +22,35 @@ public class Game {
 
     public static void createSingleMastShip(){
         SingleMastShip ship=new SingleMastShip();
-        allShips.add(ship);
     }
 
     public static void createMultiMastShip(int size){
         MultiMastShip ship=new MultiMastShip(size);
     }
-    public static void askUserForCreateShip(){
-        String row,column,size;
-        do {
-            System.out.println("Podaj wiersz X : ");
-            row =scan.nextLine();
-        }while(!Validator.checkIfIsDigit(row));
 
-        do {
-            System.out.println("Podaj kolumnę Y : ");
-            column =scan.nextLine();
-        }while(!Validator.checkIfIsDigit(column));
-
-        do {
-            System.out.println("Podaj rozmiar statku : ");
-            size=scan.nextLine();
-        }while(!Validator.checkIfIsDigit(size));
-
-
+    public static int[] askUserForShipCoordinates(){
+        int row,column;
+        int[] shipCoordinates=new int[2];
+        System.out.println("Podaj wiersz: ");
+        row=scan.nextInt();
+        System.out.println("Podaj kolumnę: ");
+        column=scan.nextInt();
+        shipCoordinates[0]=row;
+        shipCoordinates[1]=column;
+        return shipCoordinates;
     }
+
+    public static void setCoordinatesForShip(Ship ship){
+        int sizeOfShip=ship.getSize();
+        for(int i=0;i<sizeOfShip;i++) {
+            int[] cellCoordinates = askUserForShipCoordinates();
+            int row = cellCoordinates[0];
+            int column = cellCoordinates[1];
+            ship.addReservedCell(new Cell(row, column));
+        }
+    }
+
+
 
     public static int guessShipRowCoordinate(){
         String row;

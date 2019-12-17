@@ -7,13 +7,16 @@ public class Ship {
 
     public List<Cell> placement=new ArrayList<Cell>();
     public int size;
+
+    public int getSize() {
+        return size;
+    }
+
     public Ship() {
 
     }
 
-
-    public void printShipInfo()
-    {
-        //TODO
+    public void addReservedCell(Cell reservedCell){
+        placement.add(reservedCell);
     }
 }
