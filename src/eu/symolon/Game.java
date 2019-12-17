@@ -1,9 +1,13 @@
 package eu.symolon;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Game {
     static Scanner scan = new Scanner(System.in);
+    static List<Ship> allShips=new ArrayList<>();
+
 
     public static void startGame(){
         System.out.println("Rozpoczynamy grę w STATKI !");
@@ -11,24 +15,20 @@ public class Game {
                 " 1 jednomasztowy oraz 1 dwumasztowy");
     }
 
-    public static Board askUserForCreatingBoard(){
-        String boardSize;
-        do{
-            System.out.println("Podaj rozmiar tablicy gry , nie mniejszy niż 5 !");
-            boardSize=scan.nextLine();
-        }while(!Validator.checkIfIsDigit(boardSize) && !Validator.checkBoardSize(Integer.parseInt(boardSize)));
-        return new Board(Integer.parseInt(boardSize));
+    public static Board createBoard(){
+        int size=5;
+        Board board=new Board(size);
+        return board;
     }
 
-    public static int askUserForCountOfShips(){
-        System.out.println("Podaj ilość statków !");
-        String countOfShips;
-        do{
-            countOfShips=scan.nextLine();
-        }while(!Validator.checkIfIsDigit(countOfShips) && !Validator.checkCountOfShips(Integer.parseInt(countOfShips)));
-        return Integer.parseInt(countOfShips);
+    public static void createSingleMastShip(){
+        SingleMastShip ship=new SingleMastShip();
+        allShips.add(ship);
     }
 
+    public static void createMultiMastShip(){
+        MultiMastShip ship=new MultiMastShip();
+    }
     public static void askUserForCreateShip(){
         String row,column,size;
         do {
