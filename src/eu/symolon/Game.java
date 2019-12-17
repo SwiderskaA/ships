@@ -5,6 +5,12 @@ import java.util.Scanner;
 public class Game {
     static Scanner scan = new Scanner(System.in);
 
+    public static void startGame(){
+        System.out.println("Rozpoczynamy grę w STATKI !");
+        System.out.println("Użytkowniku A - rozmieść proszę statki: "+
+                " 1 jednomasztowy oraz 1 dwumasztowy");
+    }
+
     public static Board askUserForCreatingBoard(){
         String boardSize;
         do{
