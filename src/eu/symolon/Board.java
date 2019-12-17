@@ -8,6 +8,11 @@ public class Board {
     //Size of a board - one value because board is a square
     private int size;
     private Cell[][] cells;
+
+    public List<Ship> getAllShips() {
+        return allShips;
+    }
+
     public List<Ship> allShips=new ArrayList<>();
 
     public Cell[][] getCells() {

@@ -24,13 +24,41 @@ public class Game {
      public static boolean checkIfHit(int[]shipCoordinates,int[] guessedCoordinates){
         Statistics.addHit();
         if(shipCoordinates[0]==guessedCoordinates[0] && shipCoordinates[1]==guessedCoordinates[1]){
+            int row,column;
+            row=shipCoordinates[0];
+            column=shipCoordinates[1];
             Statistics.addSuccessHit();
+            board.getCells()[row][column]=new HitCell();
             return true;
         }
          return false;
      }
 
+
+
   //
+
+    public static boolean checkIfAllShipsAreHit(){
+        List<Ship> ships=board.getAllShips();
+        int numberOfCellsToHit=0;
+        int numberOfHitCells=0;
+        for(Ship ship:ships){
+            numberOfCellsToHit+=ship.getSize();
+        }
+
+        for(int i=0;i<board.getSize();i++){
+            for(int j=0;j<board.getSize();j++){
+                if(board.getCells()[i][j].getClass().toString().equals("HitCell")){
+                    numberOfHitCells+=1;
+                }
+            }
+        }
+
+        if(numberOfCellsToHit==numberOfHitCells){
+            return true;
+        }
+        return false;
+    }
 
     public static void createSingleMastShip(){
         SingleMastShip ship=new SingleMastShip();
