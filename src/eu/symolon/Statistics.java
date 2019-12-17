@@ -29,11 +29,11 @@ public class Statistics {
 
     public static void printStatistics()
     {   //TODO: change it into polish!
-        System.out.println("-------------");
+        System.out.println("------------------------");
         System.out.println("Number of total hits :" + numberOfTotalHits);
-        System.out.println("-------------");
+        System.out.println("------------------------");
         System.out.println("Number of success hits :" + numberOfSuccessHits);
-        System.out.println("-------------");
+        System.out.println("------------------------");
 
     }
 }

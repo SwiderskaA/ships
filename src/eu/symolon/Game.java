@@ -17,7 +17,8 @@ public class Game {
         System.out.println("Użytkowniku B - zgaduj przy pomocy położenia X,Y rozmieszczenia statków,"
                 +" łącznie do odgadnięcia 3 pola na planszy");
         Statistics.printStatistics();
-
+        createSingleMastShip();
+        createMultiMastShip(2);
     }
 
      //user B
@@ -62,10 +63,33 @@ public class Game {
 
     public static void createSingleMastShip(){
         SingleMastShip ship=new SingleMastShip();
+        board.addShip(ship);
+        setCoordinatesForShip(ship);
+        System.out.println("Utworzono statek jednomasztowy !");
     }
 
     public static void createMultiMastShip(int size){
         MultiMastShip ship=new MultiMastShip(size);
+        board.addShip(ship);
+        setCoordinatesForShip(ship);
+        System.out.println("Utworzono statek dwumasztowy !");
+    }
+
+
+    public static void setCoordinatesForShip(Ship ship){
+        int sizeOfShip=ship.getSize();
+        for(int i=0;i<sizeOfShip;i++) {
+            int[] cellCoordinates = askUserForShipCoordinates();
+            int row = cellCoordinates[0];
+            int column = cellCoordinates[1];
+            //ship.addReservedCell(new Cell(row, column));
+            //TODO think, if we can export is as another one function
+            System.out.println(board.getCells()[row][column].getClass().getName());
+            //OccupiedCell occupiedCell=new OccupiedCell(ship);
+           // board.getCells()[row][column]=null;
+           // board.getCells()[row][column]=occupiedCell;
+
+        }
     }
 
     public static int[] askUserForShipCoordinates(){
@@ -78,18 +102,6 @@ public class Game {
         shipCoordinates[0]=row;
         shipCoordinates[1]=column;
         return shipCoordinates;
-    }
-
-    public static void setCoordinatesForShip(Ship ship){
-        int sizeOfShip=ship.getSize();
-        for(int i=0;i<sizeOfShip;i++) {
-            int[] cellCoordinates = askUserForShipCoordinates();
-            int row = cellCoordinates[0];
-            int column = cellCoordinates[1];
-            //ship.addReservedCell(new Cell(row, column));
-            //TODO think, if we can export is as another one function
-            board.getCells()[row][column]=new OccupiedCell(ship);
-        }
     }
 
 
