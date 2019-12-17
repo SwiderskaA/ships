@@ -9,17 +9,28 @@ public class Game {
     static Board board;
 
     public static void startGame(){
+        Statistics.cleanStatistics();
         System.out.println("Rozpoczynamy grę w STATKI !");
         System.out.println("Użytkowniku A - rozmieść proszę statki: "+
                 " 1 jednomasztowy oraz 1 dwumasztowy");
         board=new Board(5);
+        System.out.println("Użytkowniku B - zgaduj przy pomocy położenia X,Y rozmieszczenia statków,"
+                +" łącznie do odgadnięcia 3 pola na planszy");
+        Statistics.printStatistics();
+
     }
 
-    /*public static Board createBoard(){
-        int size=5;
-        Board board=new Board(size);
-        return board;
-    }*/
+     //user B
+     public static boolean checkIfHit(int[]shipCoordinates,int[] guessedCoordinates){
+        Statistics.addHit();
+        if(shipCoordinates[0]==guessedCoordinates[0] && shipCoordinates[1]==guessedCoordinates[1]){
+            Statistics.addSuccessHit();
+            return true;
+        }
+         return false;
+     }
+
+  //
 
     public static void createSingleMastShip(){
         SingleMastShip ship=new SingleMastShip();
@@ -48,34 +59,12 @@ public class Game {
             int row = cellCoordinates[0];
             int column = cellCoordinates[1];
             //ship.addReservedCell(new Cell(row, column));
+            //TODO think, if we can export is as another one function
             board.getCells()[row][column]=new OccupiedCell(ship);
         }
     }
 
 
-    public static int guessShipRowCoordinate(){
-        String row;
-        do {
-            System.out.println("Podaj wiersz X : ");
-            row =scan.nextLine();
-        }while(!Validator.checkIfIsDigit(row));
-        return Integer.parseInt(row);
-    }
 
-    public static int guessShipColumnCoordinate(){
-        String column;
-        do {
-            System.out.println("Podaj kolumnę Y: ");
-            column = scan.nextLine();
-        }while(!Validator.checkIfIsDigit(column));
-        return Integer.parseInt(column);
-    }
-
-    public static boolean compareCoordinates(int xShip,int yShip,int guessedX,int guessedY){
-        if(xShip==guessedX && yShip==guessedY){
-            return true;
-        }
-        return false;
-    }
 
 }
