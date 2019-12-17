@@ -10,6 +10,10 @@ public class Board {
     private Cell[][] cells;
     public List<Ship> allShips=new ArrayList<>();
 
+    public Cell[][] getCells() {
+        return cells;
+    }
+
     public Board(int size)
     {
         size = size;
