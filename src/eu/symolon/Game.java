@@ -26,8 +26,8 @@ public class Game {
         allShips.add(ship);
     }
 
-    public static void createMultiMastShip(){
-        MultiMastShip ship=new MultiMastShip();
+    public static void createMultiMastShip(int size){
+        MultiMastShip ship=new MultiMastShip(size);
     }
     public static void askUserForCreateShip(){
         String row,column,size;
