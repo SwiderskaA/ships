@@ -36,5 +36,11 @@ public class GameManager {
         consoleIOManager.printMessage("Podaj rozmiar planszy: ");
         int boardSize = consoleIOManager.readIntValue();
 
+        consoleIOManager.printMessage("Podaj ilość statków: ");
+        int shipAmount = consoleIOManager.readIntValue();
+
+        consoleIOManager.printChooseTypeGameMenu();
+        int userGameTypeValue = consoleIOManager.readIntValue();
+
     }
 }

@@ -23,4 +23,10 @@ public class ConsoleIOManager {
     public int readIntValue() {
         return scanner.nextInt();
     }
+
+    public void printChooseTypeGameMenu() {
+        System.out.println("Wybierz typ gry" +
+                "\n 1. Losowe rozmieszczenie statków" +
+                "\n 2. Podaj rozmieszczenie statków");
+    }
 }
