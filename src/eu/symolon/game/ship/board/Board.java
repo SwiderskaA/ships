@@ -8,13 +8,26 @@ import java.util.List;
 public class Board {
 
     //Size of a board - one value because board is a square
-    private int size;
+    private int xDimension;
+    private int yDimension;
 
 
     private Cell[][] cells;
+
     public List<Ship> allShips=new ArrayList<>();
 
+    public Board(int x, int y)
+    {
+        this.xDimension = x;
+        this.yDimension = y;
 
+        this.cells=new Cell[xDimension][yDimension];
+        for(int i=0;i<xDimension;i++){
+            for(int j=0;j<yDimension;j++){
+                this.cells[i][j]=new EmptyCell();
+            }
+        };
+    }
 
     public List<Ship> getAllShips() {
         return allShips;
@@ -30,16 +43,7 @@ public class Board {
         return cells;
     }
 
-    public Board(int size)
-    {
-        this.size = size;
-        this.cells=new Cell[size][size];
-        for(int i=0;i<size;i++){
-            for(int j=0;j<size;j++){
-                this.cells[i][j]=new EmptyCell();
-            }
-        };
-    }
+
 
     public void printBoard()
     {
@@ -47,7 +51,7 @@ public class Board {
     }
 
     public int getSize() {
-        return size;
+        return 0;
     }
 
     public void clearTable()
