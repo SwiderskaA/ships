@@ -5,6 +5,14 @@ public class Cell {
     public int rowCoordinate;
     public int columnCoordinate;
 
+    public int getRowCoordinate() {
+        return rowCoordinate;
+    }
+
+    public int getColumnCoordinate() {
+        return columnCoordinate;
+    }
+
     public Cell() {
     }
 

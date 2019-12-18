@@ -8,6 +8,10 @@ public class Ship {
     public List<Cell> placement=new ArrayList<Cell>();
     public int size;
 
+    public List<Cell> getPlacement() {
+        return placement;
+    }
+
     public int getSize() {
         return size;
     }
