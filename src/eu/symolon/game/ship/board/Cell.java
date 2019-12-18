@@ -1,4 +1,4 @@
-package eu.symolon;
+package eu.symolon.game.ship.board;
 
 public class Cell {
 

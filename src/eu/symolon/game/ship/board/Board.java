@@ -1,4 +1,6 @@
-package eu.symolon;
+package eu.symolon.game.ship.board;
+
+import eu.symolon.Ship;
 
 import java.util.ArrayList;
 import java.util.List;

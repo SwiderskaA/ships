@@ -1,5 +1,7 @@
 package eu.symolon;
 
+import eu.symolon.game.ship.board.Board;
+
 public class Validator {
 
     public static boolean checkBoardSize(int boardSize){
@@ -23,7 +25,7 @@ public class Validator {
         return false;
     }
 
-    public static boolean checkIfInRangeOfBoardSize(int coordinate,Board board){
+    public static boolean checkIfInRangeOfBoardSize(int coordinate, Board board){
         if(coordinate<board.getSize()){
             return true;
         }

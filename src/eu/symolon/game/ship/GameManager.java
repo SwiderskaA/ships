@@ -6,6 +6,8 @@ public class GameManager {
 
     private ConsoleIOManager consoleIOManager;
 
+
+
     GameManager() {
         consoleIOManager = new ConsoleIOManager();
     }
@@ -15,7 +17,24 @@ public class GameManager {
 
 
 
-    public void startGame() {
+    public void start() {
+        consoleIOManager.printMainMenu();
+        //check exception if not number
+        int mainMenuValue = consoleIOManager.readIntValue();
+        switch (mainMenuValue) {
+            case 1:
+                handleGame();
+                break;
+            case 2:
+                System.exit(0);
+                break;
+        }
+
+    }
+
+    private void handleGame() {
+        consoleIOManager.printMessage("Podaj rozmiar planszy: ");
+        int boardSize = consoleIOManager.readIntValue();
 
     }
 }

@@ -1,4 +1,7 @@
-package eu.symolon;
+package eu.symolon.game.ship.board;
+
+import eu.symolon.Ship;
+import eu.symolon.game.ship.board.Cell;
 
 public class OccupiedCell extends Cell {
     Ship ship;

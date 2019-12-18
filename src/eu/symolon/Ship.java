@@ -1,5 +1,7 @@
 package eu.symolon;
 
+import eu.symolon.game.ship.board.Cell;
+
 import java.util.ArrayList;
 import java.util.List;
 
