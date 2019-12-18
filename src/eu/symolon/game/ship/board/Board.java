@@ -1,32 +1,31 @@
 package eu.symolon.game.ship.board;
 
-import eu.symolon.Ship;
+import eu.symolon.game.ship.ship.Ship;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
 
-    //Size of a board - one value because board is a square
-    private int xDimension;
-    private int yDimension;
+    private final int xDimension;
+    private final int yDimension;
 
 
     private Cell[][] cells;
 
-    public List<Ship> allShips=new ArrayList<>();
+    public List<Ship> allShips = new ArrayList<>();
 
-    public Board(int x, int y)
-    {
+    public Board(int x, int y) {
         this.xDimension = x;
         this.yDimension = y;
 
-        this.cells=new Cell[xDimension][yDimension];
-        for(int i=0;i<xDimension;i++){
-            for(int j=0;j<yDimension;j++){
-                this.cells[i][j]=new EmptyCell();
+        this.cells = new Cell[xDimension][yDimension];
+        for (int i = 0; i < xDimension; i++) {
+            for (int j = 0; j < yDimension; j++) {
+                this.cells[i][j] = new Cell(i,j);
             }
-        };
+        }
+
     }
 
     public List<Ship> getAllShips() {
@@ -34,7 +33,7 @@ public class Board {
     }
 
     //TODO: think about changing this name of function !
-    public void addShip(Ship ship){
+    public void addShip(Ship ship) {
         allShips.add(ship);
     }
 
@@ -44,9 +43,7 @@ public class Board {
     }
 
 
-
-    public void printBoard()
-    {
+    public void printBoard() {
         //TODO:implement printing board based on print Cell;
     }
 
@@ -54,8 +51,7 @@ public class Board {
         return 0;
     }
 
-    public void clearTable()
-    {
+    public void clearTable() {
         cells = null;
     }
 

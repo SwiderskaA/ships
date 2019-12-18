@@ -2,29 +2,22 @@ package eu.symolon.game.ship.board;
 
 public class Cell {
 
-    public int rowCoordinate;
-    public int columnCoordinate;
+    private final int xCoordinate;
+    private final int yCoordinate;
+    private CellState cellState;
 
-    public int getRowCoordinate() {
-        return rowCoordinate;
+
+    public Cell(int xCoordinate, int yCoordinate) {
+        this.xCoordinate = xCoordinate;
+        this.yCoordinate = yCoordinate;
+        cellState = CellState.EMPTY;
     }
 
-    public int getColumnCoordinate() {
-        return columnCoordinate;
+    public int getxCoordinate() {
+        return xCoordinate;
     }
 
-    public Cell() {
+    public int getyCoordinate() {
+        return yCoordinate;
     }
-
-    public Cell(int rowCoordinate, int columnCoordinate) {
-        this.rowCoordinate = rowCoordinate;
-        this.columnCoordinate = columnCoordinate;
-    }
-
-    public void printCell()
-    {
-        //TODO:implement cell printing;
-    }
-
-
 }

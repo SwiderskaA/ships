@@ -1,4 +1,4 @@
-package eu.symolon;
+package eu.symolon.game.ship.ship;
 
 import eu.symolon.game.ship.board.Cell;
 
