@@ -2,8 +2,6 @@ package eu.symolon;
 
 import eu.symolon.game.ship.board.Board;
 import eu.symolon.game.ship.board.Cell;
-import eu.symolon.game.ship.board.HitCell;
-import eu.symolon.game.ship.board.OccupiedCell;
 import eu.symolon.game.ship.ship.Ship;
 
 import java.util.List;
@@ -19,7 +17,7 @@ public class Game {
         System.out.println("Rozpoczynamy grę w STATKI !");
         System.out.println("Użytkowniku A - rozmieść proszę statki: "+
                 " 1 jednomasztowy oraz 1 dwumasztowy");
-        board=new Board(5);
+  //      board=new Board(5);
         createSingleMastShip();
         createMultiMastShip(2);
         askForGuessingShips();
@@ -37,7 +35,7 @@ public class Game {
                 for(Cell cell:ship.getPlacement()){
                     int[] oneCellOfShipCoodrinates=new int[2];
                     oneCellOfShipCoodrinates[0]=cell.getxCoordinate();
-                    oneCellOfShipCoodrinates[1]=cell.getColumnCoordinate();
+     //               oneCellOfShipCoodrinates[1]=cell.getColumnCoordinate();
                     checkIfHit(oneCellOfShipCoodrinates,guessedCoordinates);
                 }
             }
@@ -63,7 +61,7 @@ public class Game {
             row=shipCoordinates[0];
             column=shipCoordinates[1];
             Statistics.addSuccessHit();
-            board.getCells()[row][column]=new HitCell();
+           // board.getCells()[row][column]=new HitCell();
             System.out.println("Gratulacje ! Trafiona pozycja !");
             return true;
         }
@@ -80,14 +78,14 @@ public class Game {
             numberOfCellsToHit+=ship.getSize();
         }
 
-        System.out.println("Size ddddd"+board.getSize());
-        for(int i=0;i<board.getSize();i++){
-            for(int j=0;j<board.getSize();j++){
-                if(board.getCells()[i][j].getClass().getName().contains("HitCell")){
-                    numberOfHitCells+=1;
-                }
-            }
-        }
+//        System.out.println("Size ddddd"+board.getSize());
+//        for(int i=0;i<board.getSize();i++){
+//            for(int j=0;j<board.getSize();j++){
+//                if(board.getCells()[i][j].getClass().getName().contains("HitCell")){
+//                    numberOfHitCells+=1;
+//                }
+//            }
+//        }
 
         System.out.println(numberOfCellsToHit);
         System.out.println(numberOfHitCells);
@@ -99,17 +97,17 @@ public class Game {
     }
 
     public static void createSingleMastShip(){
-        SingleMastShip ship=new SingleMastShip();
-        board.addShip(ship);
-        setCoordinatesForShip(ship);
-        System.out.println("Utworzono statek jednomasztowy !");
+//        SingleMastShip ship=new SingleMastShip();
+//        board.addShip(ship);
+//        setCoordinatesForShip(ship);
+//        System.out.println("Utworzono statek jednomasztowy !");
     }
 
     public static void createMultiMastShip(int size){
-        MultiMastShip ship=new MultiMastShip(size);
-        board.addShip(ship);
-        setCoordinatesForShip(ship);
-        System.out.println("Utworzono statek dwumasztowy !");
+//        MultiMastShip ship=new MultiMastShip(size);
+//        board.addShip(ship);
+//        setCoordinatesForShip(ship);
+//        System.out.println("Utworzono statek dwumasztowy !");
     }
 
 
@@ -121,7 +119,7 @@ public class Game {
             int column = cellCoordinates[1];
             ship.addReservedCell(new Cell(row, column));
             //TODO think, if we can export is as another one function
-             board.getCells()[row][column]=new OccupiedCell(ship);
+    //         board.getCells()[row][column]=new OccupiedCell(ship);
         }
     }
 

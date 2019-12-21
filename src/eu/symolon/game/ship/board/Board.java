@@ -47,8 +47,12 @@ public class Board {
         //TODO:implement printing board based on print Cell;
     }
 
-    public int getSize() {
-        return 0;
+    public int getXDimension() {
+        return xDimension;
+    }
+
+    public int getYDimension() {
+        return yDimension;
     }
 
     public void clearTable() {

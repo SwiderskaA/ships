@@ -37,13 +37,11 @@ public class GameManager {
     }
 
     private void handleGame() {
-        consoleIOManager.printMessage("Podaj rozmiar planszy x: ");
-        int boardSizeX = consoleIOManager.readIntValue();
-        consoleIOManager.printMessage("Podaj rozmiar planszy y: ");
-        int boardSizeY = consoleIOManager.readIntValue();
+        int boardSizeX = consoleIOManager.readBoardSizeX();
 
-        consoleIOManager.printMessage("Podaj ilość statków: ");
-        int shipAmount = consoleIOManager.readIntValue();
+        int boardSizeY = consoleIOManager.readBoardSizeY();
+
+        int shipAmount = consoleIOManager.readShipAmount();
 
         consoleIOManager.printChooseTypeGameMenu();
         int userGameTypeValue = consoleIOManager.readIntValue();
@@ -61,7 +59,7 @@ public class GameManager {
 
     private void prepareCustomBoard(int shipAmount) {
         for(int i =0; i < shipAmount;i++) {
-            consoleIOManager.printMessage("Podaj wielkosc statku: ");
+            consoleIOManager.printMessage("Podaj wielkosc statku: "); // mniej niz 5 lub rozmiar planszy
             int shipSize = consoleIOManager.readIntValue();
             Ship ship = new Ship(shipSize);
 
@@ -80,10 +78,10 @@ public class GameManager {
     }
 
     private boolean putShipOnBoard(Ship ship) {
-        consoleIOManager.printMessage("Podaj x statku: ");
+        consoleIOManager.printMessage("Podaj x statku: "); //0-xBoard
         int shipX = consoleIOManager.readIntValue();
 
-        consoleIOManager.printMessage("Podaj y statku: ");
+        consoleIOManager.printMessage("Podaj y statku: "); //0-yBoard
         int shipY = consoleIOManager.readIntValue();
 
         consoleIOManager.printMessage("Podaj kierunek 1 lewo, 2 prawo, 3 gora, 4 dol: ");

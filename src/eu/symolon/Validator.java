@@ -25,14 +25,17 @@ public class Validator {
         return false;
     }
 
-    public static boolean checkIfInRangeOfBoardSize(int coordinate, Board board){
-        if(coordinate<board.getSize()){
-            return true;
-        }
-        return false;
-    }
 
     public static boolean validateShipPosition(int shipX, int shipY, int shipDirection, Board gameBoard) {
         return true;
+    }
+
+    public static boolean validateInRange(int size, int min, int max) {
+        return size >= min && size <= max;
+    }
+
+
+    public static boolean validateNotInRange(int size, int min, int max) {
+        return !validateInRange(size,min,max);
     }
 }
