@@ -4,9 +4,7 @@ import eu.symolon.game.ship.board.Board;
 import eu.symolon.game.ship.board.Cell;
 import eu.symolon.game.ship.board.HitCell;
 import eu.symolon.game.ship.board.OccupiedCell;
-import eu.symolon.game.ship.ship.MultiMastShip;
 import eu.symolon.game.ship.ship.Ship;
-import eu.symolon.game.ship.ship.SingleMastShip;
 
 import java.util.List;
 import java.util.Scanner;

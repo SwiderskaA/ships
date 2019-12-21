@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Ship {
 
-    public List<Cell> placement=new ArrayList<Cell>();
+    public List<Cell> placement = new ArrayList<Cell>();
     public int size;
 
     public List<Cell> getPlacement() {
@@ -19,10 +19,14 @@ public class Ship {
     }
 
     public Ship() {
-
+        size = 1;
     }
 
-    public void addReservedCell(Cell reservedCell){
+    public Ship(int size) {
+        this.size = size;
+    }
+
+    public void addReservedCell(Cell reservedCell) {
         placement.add(reservedCell);
     }
 }

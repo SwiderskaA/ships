@@ -31,4 +31,8 @@ public class Validator {
         }
         return false;
     }
+
+    public static boolean validateShipPosition(int shipX, int shipY, int shipDirection, Board gameBoard) {
+        return true;
+    }
 }

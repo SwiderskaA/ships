@@ -1,7 +1,10 @@
 package eu.symolon.game.ship;
 
+import eu.symolon.Validator;
 import eu.symolon.game.ship.board.Board;
 import eu.symolon.game.ship.io.ConsoleIOManager;
+import eu.symolon.game.ship.ship.RandomShipGenerator;
+import eu.symolon.game.ship.ship.Ship;
 
 public class GameManager {
 
@@ -45,8 +48,69 @@ public class GameManager {
         consoleIOManager.printChooseTypeGameMenu();
         int userGameTypeValue = consoleIOManager.readIntValue();
 
+
         gameBoard = new Board(boardSizeX,boardSizeY);
 
+        if(userGameTypeValue == 1) {
+            prepareRandomBoard(shipAmount);
+        } else {
+            prepareCustomBoard(shipAmount);
+        }
 
+    }
+
+    private void prepareCustomBoard(int shipAmount) {
+        for(int i =0; i < shipAmount;i++) {
+            consoleIOManager.printMessage("Podaj wielkosc statku: ");
+            int shipSize = consoleIOManager.readIntValue();
+            Ship ship = new Ship(shipSize);
+
+            boolean added = putShipOnBoard(ship);
+            while (!added) {
+                consoleIOManager.printMessage("Błędna pozytacja. Spróbuj jeszcze raz: ");
+                added = putShipOnBoard(ship);
+            }
+
+            //random x
+
+            //random y
+
+            //add to board on random position and update ship placement inside
+        }
+    }
+
+    private boolean putShipOnBoard(Ship ship) {
+        consoleIOManager.printMessage("Podaj x statku: ");
+        int shipX = consoleIOManager.readIntValue();
+
+        consoleIOManager.printMessage("Podaj y statku: ");
+        int shipY = consoleIOManager.readIntValue();
+
+        consoleIOManager.printMessage("Podaj kierunek 1 lewo, 2 prawo, 3 gora, 4 dol: ");
+        int shipDirection = consoleIOManager.readIntValue();
+
+        if(Validator.validateShipPosition(shipX, shipY, shipDirection, gameBoard)) {
+            gameBoard.addShip(ship);
+            //set placement
+            return true;
+        } else {
+            return false;
+        }
+
+
+
+
+    }
+
+    private void prepareRandomBoard(int shipAmount) {
+        for(int i =0; i < shipAmount;i++) {
+            Ship ship = RandomShipGenerator.generateRandomSizeShip();
+
+            //random x
+
+            //random y
+
+            //add to board on random position and update ship placement inside
+        }
     }
 }
