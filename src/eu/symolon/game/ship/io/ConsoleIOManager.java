@@ -68,4 +68,14 @@ public class ConsoleIOManager {
         }
         return size;
     }
+
+    public int readShipSize() {
+        int size = -1;
+        while (validateNotInRange(size, 1, 4)) {
+            printMessage("Podaj wielkosc statku: ");
+            size = readIntValue();
+
+        }
+        return size;
+    }
 }

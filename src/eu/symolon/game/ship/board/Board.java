@@ -22,7 +22,7 @@ public class Board {
         this.cells = new Cell[xDimension][yDimension];
         for (int i = 0; i < xDimension; i++) {
             for (int j = 0; j < yDimension; j++) {
-                this.cells[i][j] = new Cell(i,j);
+                this.cells[i][j] = new Cell(i, j);
             }
         }
 
@@ -44,7 +44,18 @@ public class Board {
 
 
     public void printBoard() {
-        //TODO:implement printing board based on print Cell;
+        System.out.print("  ");
+        for (int j = 0; j < yDimension; j++) {
+            System.out.print(j + " ");
+        }
+        System.out.println();
+        for (int i = 0; i < xDimension; i++) {
+            System.out.print(i + " ");
+            for (int j = 0; j < yDimension; j++) {
+                System.out.print(this.cells[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 
     public int getXDimension() {

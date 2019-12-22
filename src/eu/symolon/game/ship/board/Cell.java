@@ -20,4 +20,9 @@ public class Cell {
     public int getyCoordinate() {
         return yCoordinate;
     }
+
+    @Override
+    public String toString() {
+        return cellState.getSign();
+    }
 }

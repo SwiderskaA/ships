@@ -47,9 +47,10 @@ public class GameManager {
         int userGameTypeValue = consoleIOManager.readIntValue();
 
 
-        gameBoard = new Board(boardSizeX,boardSizeY);
-
-        if(userGameTypeValue == 1) {
+        gameBoard = new Board(boardSizeX, boardSizeY);
+//print board for test
+        gameBoard.printBoard();
+        if (userGameTypeValue == 1) {
             prepareRandomBoard(shipAmount);
         } else {
             prepareCustomBoard(shipAmount);
@@ -58,9 +59,8 @@ public class GameManager {
     }
 
     private void prepareCustomBoard(int shipAmount) {
-        for(int i =0; i < shipAmount;i++) {
-            consoleIOManager.printMessage("Podaj wielkosc statku: "); // mniej niz 5 lub rozmiar planszy
-            int shipSize = consoleIOManager.readIntValue();
+        for (int i = 0; i < shipAmount; i++) {
+            int shipSize = consoleIOManager.readShipSize();
             Ship ship = new Ship(shipSize);
 
             boolean added = putShipOnBoard(ship);
@@ -69,11 +69,6 @@ public class GameManager {
                 added = putShipOnBoard(ship);
             }
 
-            //random x
-
-            //random y
-
-            //add to board on random position and update ship placement inside
         }
     }
 
@@ -87,21 +82,22 @@ public class GameManager {
         consoleIOManager.printMessage("Podaj kierunek 1 lewo, 2 prawo, 3 gora, 4 dol: ");
         int shipDirection = consoleIOManager.readIntValue();
 
-        if(Validator.validateShipPosition(shipX, shipY, shipDirection, gameBoard)) {
+        if (Validator.validateShipPosition(shipX, shipY, shipDirection, gameBoard)) {
             gameBoard.addShip(ship);
-            //set placement
+            for (int i = 0; i < ship.getSize(); i++) {
+
+                //ship.getPlacement().add(gameBoard.getCell(sh))
+            }
             return true;
         } else {
             return false;
         }
 
 
-
-
     }
 
     private void prepareRandomBoard(int shipAmount) {
-        for(int i =0; i < shipAmount;i++) {
+        for (int i = 0; i < shipAmount; i++) {
             Ship ship = RandomShipGenerator.generateRandomSizeShip();
 
             //random x
