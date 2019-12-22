@@ -33,10 +33,17 @@ public class ConsoleIOManager {
         }
     }
 
-    public void printChooseTypeGameMenu() {
-        System.out.println("Wybierz typ gry" +
-                "\n 1. Losowe rozmieszczenie statków" +
-                "\n 2. Podaj rozmieszczenie statków");
+    public int readGameType() {
+
+        int type = -1;
+        while (validateNotInRange(type, 1, 2)) {
+            System.out.println("Wybierz typ gry" +
+                    "\n 1. Losowe rozmieszczenie statków" +
+                    "\n 2. Podaj rozmieszczenie statków");
+            type = readIntValue();
+
+        }
+        return type;
     }
 
     public int readBoardSizeX() {

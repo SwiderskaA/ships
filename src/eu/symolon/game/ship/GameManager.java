@@ -43,8 +43,7 @@ public class GameManager {
 
         int shipAmount = consoleIOManager.readShipAmount();
 
-        consoleIOManager.printChooseTypeGameMenu();
-        int userGameTypeValue = consoleIOManager.readIntValue();
+        int userGameTypeValue = consoleIOManager.readGameType();
 
 
         gameBoard = new Board(boardSizeX, boardSizeY);
@@ -60,6 +59,7 @@ public class GameManager {
 
     private void prepareCustomBoard(int shipAmount) {
         for (int i = 0; i < shipAmount; i++) {
+            gameBoard.printBoard();
             int shipSize = consoleIOManager.readShipSize();
             Ship ship = new Ship(shipSize);
 

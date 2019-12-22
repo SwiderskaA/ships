@@ -21,6 +21,10 @@ public class Cell {
         return yCoordinate;
     }
 
+    public CellState getCellState() {
+        return cellState;
+    }
+
     @Override
     public String toString() {
         return cellState.getSign();

@@ -13,7 +13,7 @@ public class Board {
 
     private Cell[][] cells;
 
-    public List<Ship> allShips = new ArrayList<>();
+    private List<Ship> allShips = new ArrayList<>();
 
     public Board(int x, int y) {
         this.xDimension = x;
@@ -32,7 +32,7 @@ public class Board {
         return allShips;
     }
 
-    //TODO: think about changing this name of function !
+
     public void addShip(Ship ship) {
         allShips.add(ship);
     }
@@ -53,6 +53,25 @@ public class Board {
             System.out.print(i + " ");
             for (int j = 0; j < yDimension; j++) {
                 System.out.print(this.cells[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public void printPlayerBoard() {
+        System.out.print("  ");
+        for (int j = 0; j < yDimension; j++) {
+            System.out.print(j + " ");
+        }
+        System.out.println();
+        for (int i = 0; i < xDimension; i++) {
+            System.out.print(i + " ");
+            for (int j = 0; j < yDimension; j++) {
+                if (this.cells[i][j].getCellState() == CellState.OCCUPIED) {
+                    System.out.print(". ");
+                } else {
+                    System.out.print(this.cells[i][j] + " ");
+                }
             }
             System.out.println();
         }
