@@ -2,9 +2,13 @@ package eu.symolon.game.ship;
 
 import eu.symolon.Validator;
 import eu.symolon.game.ship.board.Board;
+import eu.symolon.game.ship.board.Cell;
+import eu.symolon.game.ship.board.CellState;
 import eu.symolon.game.ship.io.ConsoleIOManager;
 import eu.symolon.game.ship.ship.RandomShipGenerator;
 import eu.symolon.game.ship.ship.Ship;
+
+import java.util.Random;
 
 public class GameManager {
 
@@ -54,6 +58,10 @@ public class GameManager {
         } else {
             prepareCustomBoard(shipAmount);
         }
+        System.out.println("Przygotowana plansza");
+        gameBoard.printBoard();
+
+
 
     }
 
@@ -100,11 +108,39 @@ public class GameManager {
         for (int i = 0; i < shipAmount; i++) {
             Ship ship = RandomShipGenerator.generateRandomSizeShip();
 
-            //random x
+            int rows = gameBoard.getYDimension();
+            int columns = gameBoard.getXDimension();
 
-            //random y
+            boolean rowIsFree = false;
+            int generatedRow = 0;
+            do {
+                 generatedRow = (new Random()).nextInt(rows);
+                rowIsFree = checkIfRowFree(gameBoard,generatedRow);
+            } while(!rowIsFree);
 
-            //add to board on random position and update ship placement inside
+            int generatedColl = (new Random()).nextInt(columns-ship.getSize()) + 1;
+
+            for (int j = generatedColl; j < generatedColl+ship.getSize() ; j++) {
+                ship.addReservedCell(new Cell(generatedRow,j,CellState.OCCUPIED));
+            }
+
+            gameBoard.addShip(ship);
+
+
         }
+    }
+
+    private boolean checkIfRowFree(Board gameBoard, int generatedRow) {
+        Cell[][] cells = gameBoard.getCells();
+        boolean isRowFree = true;
+        for (int i = 0; i < gameBoard.getXDimension(); i++) {
+            if(cells[generatedRow][i].getCellState() != CellState.EMPTY) {
+                isRowFree = false;
+                break;
+            }
+
+        }
+
+        return isRowFree;
     }
 }

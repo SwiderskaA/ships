@@ -19,9 +19,9 @@ public class Board {
         this.xDimension = x;
         this.yDimension = y;
 
-        this.cells = new Cell[xDimension][yDimension];
-        for (int i = 0; i < xDimension; i++) {
-            for (int j = 0; j < yDimension; j++) {
+        this.cells = new Cell[yDimension][xDimension];
+        for (int i = 0; i < yDimension; i++) {
+            for (int j = 0; j < xDimension; j++) {
                 this.cells[i][j] = new Cell(i, j);
             }
         }
@@ -34,6 +34,9 @@ public class Board {
 
 
     public void addShip(Ship ship) {
+        for (Cell c : ship.getPlacement()) {
+            (cells[c.getxCoordinate()][c.getyCoordinate()]).setCellState(CellState.OCCUPIED);
+        }
         allShips.add(ship);
     }
 
@@ -45,13 +48,13 @@ public class Board {
 
     public void printBoard() {
         System.out.print("  ");
-        for (int j = 0; j < yDimension; j++) {
+        for (int j = 0; j < xDimension; j++) {
             System.out.print(j + " ");
         }
         System.out.println();
-        for (int i = 0; i < xDimension; i++) {
+        for (int i = 0; i < yDimension; i++) {
             System.out.print(i + " ");
-            for (int j = 0; j < yDimension; j++) {
+            for (int j = 0; j < xDimension; j++) {
                 System.out.print(this.cells[i][j] + " ");
             }
             System.out.println();
@@ -60,13 +63,13 @@ public class Board {
 
     public void printPlayerBoard() {
         System.out.print("  ");
-        for (int j = 0; j < yDimension; j++) {
+        for (int j = 0; j < xDimension; j++) {
             System.out.print(j + " ");
         }
         System.out.println();
-        for (int i = 0; i < xDimension; i++) {
+        for (int i = 0; i < yDimension; i++) {
             System.out.print(i + " ");
-            for (int j = 0; j < yDimension; j++) {
+            for (int j = 0; j < xDimension; j++) {
                 if (this.cells[i][j].getCellState() == CellState.OCCUPIED) {
                     System.out.print(". ");
                 } else {

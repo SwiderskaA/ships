@@ -10,7 +10,13 @@ public class Cell {
     public Cell(int xCoordinate, int yCoordinate) {
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
-        cellState = CellState.EMPTY;
+        this.cellState = CellState.EMPTY;
+    }
+
+    public Cell(int xCoordinate, int yCoordinate, CellState cellState) {
+        this.xCoordinate = xCoordinate;
+        this.yCoordinate = yCoordinate;
+        this.cellState = cellState;
     }
 
     public int getxCoordinate() {
@@ -23,6 +29,10 @@ public class Cell {
 
     public CellState getCellState() {
         return cellState;
+    }
+
+    public void setCellState(CellState cellState) {
+        this.cellState = cellState;
     }
 
     @Override
