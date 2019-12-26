@@ -85,4 +85,14 @@ public class ConsoleIOManager {
         }
         return size;
     }
+
+    public int readValueFromRange(int min, int max, String message) {
+        int size = -1;
+        while (validateNotInRange(size, min, max)) {
+            printMessage(message);
+            size = readIntValue();
+
+        }
+        return size;
+    }
 }

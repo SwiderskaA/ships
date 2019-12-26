@@ -36,6 +36,7 @@ public class Board {
     public void addShip(Ship ship) {
         for (Cell c : ship.getPlacement()) {
             (cells[c.getxCoordinate()][c.getyCoordinate()]).setCellState(CellState.OCCUPIED);
+            (cells[c.getxCoordinate()][c.getyCoordinate()]).setShip(ship);
         }
         allShips.add(ship);
     }
@@ -88,8 +89,16 @@ public class Board {
         return yDimension;
     }
 
-    public void clearTable() {
-        cells = null;
+    public CellState getCellState(int x, int y) {
+        return cells[y][x].getCellState();
+    }
+
+    public void setCellState(int x, int y, CellState cellState) {
+        cells[y][x].setCellState(cellState);
+    }
+
+    public Cell getCell(int x, int y) {
+        return cells[y][x];
     }
 
 

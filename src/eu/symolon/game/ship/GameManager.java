@@ -61,6 +61,8 @@ public class GameManager {
         System.out.println("Przygotowana plansza");
         gameBoard.printBoard();
 
+        Game.getInstance().play(gameBoard);
+
 
 
     }
@@ -121,7 +123,7 @@ public class GameManager {
             int generatedColl = (new Random()).nextInt(columns-ship.getSize()) + 1;
 
             for (int j = generatedColl; j < generatedColl+ship.getSize() ; j++) {
-                ship.addReservedCell(new Cell(generatedRow,j,CellState.OCCUPIED));
+                ship.addReservedCell(new Cell(generatedRow,j,CellState.OCCUPIED, ship));
             }
 
             gameBoard.addShip(ship);

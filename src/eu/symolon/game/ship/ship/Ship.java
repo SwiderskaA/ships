@@ -7,8 +7,9 @@ import java.util.List;
 
 public class Ship {
 
-    public List<Cell> placement = new ArrayList<Cell>();
-    public int size;
+    private List<Cell> placement = new ArrayList<Cell>();
+    private int size;
+    private int hits = 0;
 
     public List<Cell> getPlacement() {
         return placement;
@@ -28,5 +29,13 @@ public class Ship {
 
     public void addReservedCell(Cell reservedCell) {
         placement.add(reservedCell);
+    }
+
+    public void hit() {
+        hits++;
+    }
+
+    public boolean isDestroyed() {
+        return placement.size() == hits;
     }
 }

@@ -3,7 +3,9 @@ package eu.symolon.game.ship.board;
 public enum CellState {
 
     EMPTY("."),
-    OCCUPIED("X"),
+    OCCUPIED("o"),
+    HIT("x"),
+    MISSED("m"),
     DESTROYED("D");
 
     private String sign;
