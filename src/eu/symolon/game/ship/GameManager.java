@@ -78,24 +78,29 @@ public class GameManager {
             }
 
         }
+
     }
 
     private boolean putShipOnBoard(Ship ship) {
-        consoleIOManager.printMessage("Podaj x statku: "); //0-xBoard
-        int shipX = consoleIOManager.readIntValue();
 
-        consoleIOManager.printMessage("Podaj y statku: "); //0-yBoard
-        int shipY = consoleIOManager.readIntValue();
+        int shipX = consoleIOManager.readValueFromRange(0,gameBoard.getXDimension()-1,"Podaj x statku: ");
 
-        consoleIOManager.printMessage("Podaj kierunek 1 lewo, 2 prawo, 3 gora, 4 dol: ");
-        int shipDirection = consoleIOManager.readIntValue();
+        int shipY = consoleIOManager.readValueFromRange(0,gameBoard.getYDimension()-1,"Podaj y statku: ");
 
-        if (Validator.validateShipPosition(shipX, shipY, shipDirection, gameBoard)) {
-            gameBoard.addShip(ship);
-            for (int i = 0; i < ship.getSize(); i++) {
+        int shipDirection = consoleIOManager.readValueFromRange(1,2,"Podaj kierunek 1 - prawo, 2 - dół: ");
 
-                //ship.getPlacement().add(gameBoard.getCell(sh))
+        if (Validator.validateShipPosition(shipX, shipY, shipDirection, ship.getSize(), gameBoard)) {
+
+            if(shipDirection == 1) {
+                for (int i = shipX; i < shipX + ship.getSize(); i++) {
+                    ship.addReservedCell(new Cell(shipY, i, CellState.OCCUPIED, ship));
+                }
+            } else {
+                for (int i = shipY; i < shipY + ship.getSize(); i++) {
+                    ship.addReservedCell(new Cell(i, shipX, CellState.OCCUPIED, ship));
+                }
             }
+            gameBoard.addShip(ship);
             return true;
         } else {
             return false;

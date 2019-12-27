@@ -1,11 +1,29 @@
 package eu.symolon.game.ship;
 
 import eu.symolon.game.ship.board.Board;
+import eu.symolon.game.ship.board.CellState;
 
 public class Validator {
 
-    public static boolean validateShipPosition(int shipX, int shipY, int shipDirection, Board gameBoard) {
-        return true;
+    public static boolean validateShipPosition(int shipX, int shipY, int shipDirection, int shipSize, Board gameBoard) {
+
+        if (shipDirection == 1 && validateInRange(shipX + shipSize - 1, 0, gameBoard.getXDimension() - 1)) {
+
+            for (int i = shipX; i < shipX + shipSize; i++) {
+                if (gameBoard.getCellState(i, shipY) != CellState.EMPTY) {
+                    return false;
+                }
+            }
+            return true;
+        } else if (shipDirection == 2 && validateInRange(shipY + shipSize - 1, 0, gameBoard.getYDimension() - 1)) {
+            for (int i = shipY; i < shipY + shipSize; i++) {
+                if (gameBoard.getCellState(shipX, i) != CellState.EMPTY) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
     }
 
     public static boolean validateInRange(int size, int min, int max) {
