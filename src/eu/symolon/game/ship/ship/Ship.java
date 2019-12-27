@@ -7,8 +7,8 @@ import java.util.List;
 
 public class Ship {
 
-    private List<Cell> placement = new ArrayList<Cell>();
-    private int size;
+    private final List<Cell> placement = new ArrayList<Cell>();
+    private final int size;
     private int hits = 0;
 
     public List<Cell> getPlacement() {

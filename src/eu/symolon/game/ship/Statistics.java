@@ -1,7 +1,7 @@
 package eu.symolon.game.ship;
 
 public class Statistics {
-    private static Statistics statistics = new Statistics();
+    private static final Statistics statistics = new Statistics();
 
     public static Statistics getInstance() {
         return statistics;

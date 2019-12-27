@@ -12,13 +12,6 @@ public class ConsoleIOManager {
         scanner = new Scanner(System.in);
     }
 
-    public void printMainMenu() {
-        System.out.println("Rozpoczynamy gre w statki" +
-                "\n 1. Rozpocznij gre" +
-                "\n 2. Zakończ");
-
-    }
-
     public void printMessage(String message) {
         System.out.println(message);
     }

@@ -11,9 +11,9 @@ public class Board {
     private final int yDimension;
 
 
-    private Cell[][] cells;
+    private final Cell[][] cells;
 
-    private List<Ship> allShips = new ArrayList<>();
+    private final List<Ship> allShips = new ArrayList<>();
 
     public Board(int x, int y) {
         this.xDimension = x;

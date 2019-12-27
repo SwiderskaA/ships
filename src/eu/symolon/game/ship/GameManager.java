@@ -9,11 +9,12 @@ import eu.symolon.game.ship.ship.Ship;
 
 import java.util.Random;
 
+import static eu.symolon.game.ship.Validator.checkIfRowFree;
+
 public class GameManager {
 
     private final ConsoleIOManager consoleIOManager;
     private Board gameBoard;
-
 
     private GameManager() {
         consoleIOManager = new ConsoleIOManager();
@@ -23,11 +24,13 @@ public class GameManager {
         return new GameManager();
     }
 
-
     public void start() {
-        consoleIOManager.printMainMenu();
+
         //check exception if not number
-        int mainMenuValue = consoleIOManager.readIntValue();
+        int mainMenuValue = consoleIOManager.readValueFromRange(1, 2, "Rozpoczynamy gre w statki" +
+                "\n 1. Rozpocznij gre" +
+                "\n 2. Zakończ");
+
         switch (mainMenuValue) {
             case 1:
                 handleGame();
@@ -51,14 +54,14 @@ public class GameManager {
 
         gameBoard = new Board(boardSizeX, boardSizeY);
 //print board for test
-        gameBoard.printBoard();
+//        gameBoard.printBoard();
         if (userGameTypeValue == 1) {
             prepareRandomBoard(shipAmount);
         } else {
             prepareCustomBoard(shipAmount);
         }
-        System.out.println("Przygotowana plansza");
-        gameBoard.printBoard();
+        consoleIOManager.printMessage("Plansza przygotowana");
+        //gameBoard.printBoard();
 
         Game.getInstance().play(gameBoard);
 
@@ -83,15 +86,15 @@ public class GameManager {
 
     private boolean putShipOnBoard(Ship ship) {
 
-        int shipX = consoleIOManager.readValueFromRange(0,gameBoard.getXDimension()-1,"Podaj x statku: ");
+        int shipX = consoleIOManager.readValueFromRange(0, gameBoard.getXDimension() - 1, "Podaj x statku: ");
 
-        int shipY = consoleIOManager.readValueFromRange(0,gameBoard.getYDimension()-1,"Podaj y statku: ");
+        int shipY = consoleIOManager.readValueFromRange(0, gameBoard.getYDimension() - 1, "Podaj y statku: ");
 
-        int shipDirection = consoleIOManager.readValueFromRange(1,2,"Podaj kierunek 1 - prawo, 2 - dół: ");
+        int shipDirection = consoleIOManager.readValueFromRange(1, 2, "Podaj kierunek 1 - prawo, 2 - dół: ");
 
         if (Validator.validateShipPosition(shipX, shipY, shipDirection, ship.getSize(), gameBoard)) {
 
-            if(shipDirection == 1) {
+            if (shipDirection == 1) {
                 for (int i = shipX; i < shipX + ship.getSize(); i++) {
                     ship.addReservedCell(new Cell(shipY, i, CellState.OCCUPIED, ship));
                 }
@@ -105,8 +108,6 @@ public class GameManager {
         } else {
             return false;
         }
-
-
     }
 
     private void prepareRandomBoard(int shipAmount) {
@@ -133,19 +134,5 @@ public class GameManager {
 
 
         }
-    }
-
-    private boolean checkIfRowFree(Board gameBoard, int generatedRow) {
-        Cell[][] cells = gameBoard.getCells();
-        boolean isRowFree = true;
-        for (int i = 0; i < gameBoard.getXDimension(); i++) {
-            if (cells[generatedRow][i].getCellState() != CellState.EMPTY) {
-                isRowFree = false;
-                break;
-            }
-
-        }
-
-        return isRowFree;
     }
 }

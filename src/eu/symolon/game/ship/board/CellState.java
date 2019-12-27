@@ -8,7 +8,7 @@ public enum CellState {
     MISSED("m"),
     DESTROYED("D");
 
-    private String sign;
+    private final String sign;
 
     CellState(String sign) {
         this.sign = sign;
