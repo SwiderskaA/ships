@@ -10,6 +10,7 @@ import java.util.List;
 public class Game {
     private final static Game game = new Game();
     private final ConsoleIOManager consoleIOManager;
+    private final Statistics statistics = Statistics.getInstance();
 
     private Game() {
         this.consoleIOManager = new ConsoleIOManager();
@@ -25,12 +26,14 @@ public class Game {
             shoot(board);
             board.printPlayerBoard();
         }
+        statistics.print();
         consoleIOManager.printMessage("Gra skończona. Dziękujemy");
     }
 
     private void shoot(Board board) {
         int x = consoleIOManager.readValueFromRange(0, board.getXDimension() - 1, "Podaj koordynat X statku");
         int y = consoleIOManager.readValueFromRange(0, board.getYDimension() - 1, "Podaj koordynat Y statku");
+        statistics.increaseTotal();
         switch (board.getCellState(x, y)) {
             case EMPTY:
                 consoleIOManager.printMessage("Pudło");
@@ -50,6 +53,7 @@ public class Game {
 
     private void handleHitShoot(Board board, int x, int y) {
         consoleIOManager.printMessage("Trafiony!");
+        statistics.increaseSuccessHit();
         board.setCellState(x, y, CellState.HIT);
         Cell cell = board.getCell(x, y);
         if (cell.getShip() != null) {

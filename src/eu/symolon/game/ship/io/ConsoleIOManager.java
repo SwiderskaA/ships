@@ -3,7 +3,7 @@ package eu.symolon.game.ship.io;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static eu.symolon.Validator.*;
+import static eu.symolon.game.ship.Validator.*;
 
 public class ConsoleIOManager {
     private final Scanner scanner;

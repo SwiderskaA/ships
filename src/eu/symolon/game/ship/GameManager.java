@@ -1,6 +1,5 @@
 package eu.symolon.game.ship;
 
-import eu.symolon.Validator;
 import eu.symolon.game.ship.board.Board;
 import eu.symolon.game.ship.board.Cell;
 import eu.symolon.game.ship.board.CellState;
@@ -64,7 +63,6 @@ public class GameManager {
         Game.getInstance().play(gameBoard);
 
 
-
     }
 
     private void prepareCustomBoard(int shipAmount) {
@@ -116,14 +114,14 @@ public class GameManager {
             boolean rowIsFree = false;
             int generatedRow = 0;
             do {
-                 generatedRow = (new Random()).nextInt(rows);
-                rowIsFree = checkIfRowFree(gameBoard,generatedRow);
-            } while(!rowIsFree);
+                generatedRow = (new Random()).nextInt(rows);
+                rowIsFree = checkIfRowFree(gameBoard, generatedRow);
+            } while (!rowIsFree);
 
-            int generatedColl = (new Random()).nextInt(columns-ship.getSize()) + 1;
+            int generatedColl = (new Random()).nextInt(columns - ship.getSize()) + 1;
 
-            for (int j = generatedColl; j < generatedColl+ship.getSize() ; j++) {
-                ship.addReservedCell(new Cell(generatedRow,j,CellState.OCCUPIED, ship));
+            for (int j = generatedColl; j < generatedColl + ship.getSize(); j++) {
+                ship.addReservedCell(new Cell(generatedRow, j, CellState.OCCUPIED, ship));
             }
 
             gameBoard.addShip(ship);
@@ -136,7 +134,7 @@ public class GameManager {
         Cell[][] cells = gameBoard.getCells();
         boolean isRowFree = true;
         for (int i = 0; i < gameBoard.getXDimension(); i++) {
-            if(cells[generatedRow][i].getCellState() != CellState.EMPTY) {
+            if (cells[generatedRow][i].getCellState() != CellState.EMPTY) {
                 isRowFree = false;
                 break;
             }
